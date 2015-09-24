@@ -3,7 +3,7 @@
 if (!defined('_PS_VERSION_'))
   exit;
  
-class Lexiktron extends Module
+class Lexikotron extends Module
 {
 	public function __construct()
 	{
@@ -22,6 +22,10 @@ class Lexiktron extends Module
 		$this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 	}
 
+
+	/**
+	 * @see Module::install()
+	 */
 	public function install()
 	{
 		if (!parent::install())
@@ -29,6 +33,9 @@ class Lexiktron extends Module
 		return true;
 	}
 
+	/**
+	 * @see Module::uninstall()
+	 */
 	public function uninstall()
 	{
 		if (!parent::uninstall())
