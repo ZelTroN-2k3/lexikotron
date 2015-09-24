@@ -1,5 +1,9 @@
 <?php
 
+/*
+*  @author Mario Johnathan <xanou.dev@gmail.com>
+*/
+
 if (!defined('_PS_VERSION_'))
   exit;
  
@@ -28,9 +32,27 @@ class Lexikotron extends Module
 	 */
 	public function install()
 	{
-		if (!parent::install())
+		if (
+			!parent::install()
+			&& !$this->createTables();
+		)
 			return false;
 		return true;
+	}
+
+	/**
+	 * Creates tables
+	 */
+	protected function createTables()
+	{
+		return Db::getInstance()->execute('
+			CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lexikotron` (
+				`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+				`name` varchar(255) NOT NULL,
+				`description` text NOT NULL,
+				PRIMARY KEY (`id`)
+			) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=UTF8;
+		');
 	}
 
 	/**
@@ -38,8 +60,21 @@ class Lexikotron extends Module
 	 */
 	public function uninstall()
 	{
-		if (!parent::uninstall())
+		if (
+			!parent::uninstall()
+			&& !$this->deleteTables()
+		)
 			return false;
 		return true;
+	}
+
+	/**
+	 * deletes tables
+	 */
+	protected function deleteTables()
+	{
+		return Db::getInstance()->execute('
+			DROP TABLE IF EXISTS `'._DB_PREFIX_.'lexikotron`;
+		');
 	}
 }
