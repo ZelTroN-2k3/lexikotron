@@ -45,14 +45,24 @@ class Lexikotron extends Module
 	 */
 	protected function createTables()
 	{
-		return Db::getInstance()->execute('
+		$sql = Db::getInstance()->execute('
 			CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lexikotron` (
 				`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-				`name` varchar(255) NOT NULL,
-				`description` text NOT NULL,
+				`active` TINYINT(1) NOT NULL,
+				`date_add` DATETIME NOT NULL,
+				`date_edit` DATETIME NOT NULL,
 				PRIMARY KEY (`id`)
 			) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=UTF8;
 		');
+
+		$sql &=  Db::getInstance()->execute('
+			CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lexikotron_lang` (
+				`id_lexikotron` int(10) unsigned NOT NULL,
+				`name` varchar(255) NOT NULL,
+				`description` text NOT NULL
+			) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=UTF8;
+		');
+		return $sql;
 	}
 
 	/**
