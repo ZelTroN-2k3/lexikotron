@@ -16,7 +16,8 @@ class Glossary extends ObjectModel
 		'fields' => array(
 			'active' =>	array('type' => self::TYPE_BOOL, 'shop' => true, 'validate' => 'isBool'),
 			'name' => array('type' => self::TYPE_STRING, 'lang' => true),
-			'description' => array('type' => self::TYPE_HTML,	'lang' => true),
+			'd
+			escription' => array('type' => self::TYPE_HTML,	'lang' => true),
 			'date_add' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
 			'date_edit' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
 		)
@@ -67,10 +68,7 @@ class Glossary extends ObjectModel
 				($limit > 0 ? ' LIMIT '.(int)$start.','.(int)$limit : '');
 		$rows = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
 
-		if($rows)
-			return ObjectModel :: hydrateCollection(__CLASS__, $rows);
-
-		return array();
+		return $rows;
 	}
 
 }
