@@ -34,7 +34,7 @@ class Lexikotron extends Module
 	{
 		if (
 			!parent::install()
-			&& !$this->createTables()
+			|| !$this->createTables()
 		)
 			return false;
 		return true;
@@ -72,7 +72,7 @@ class Lexikotron extends Module
 	{
 		if (
 			!parent::uninstall()
-			&& !$this->deleteTables()
+			|| !$this->deleteTables()
 		)
 			return false;
 		return true;
@@ -99,6 +99,84 @@ class Lexikotron extends Module
 	 */
 	public function getContent()
 	{
+		$output = null;
+ 
+	    if (Tools::isSubmit('submit'.$this->name))
+	    {
+	        $my_module_name = strval(Tools::getValue('MYMODULE_NAME'));
+	        if (!$my_module_name
+	          || empty($my_module_name)
+	          || !Validate::isGenericName($my_module_name))
+	            $output .= $this->displayError($this->l('Invalid Configuration value'));
+	        else
+	        {
+	            Configuration::updateValue('MYMODULE_NAME', $my_module_name);
+	            $output .= $this->displayConfirmation($this->l('Settings updated'));
+	        }
+	    }
+	    return $output.$this->displayForm();
 
+	}
+
+	/**
+	 * Displays form for adding/editing glossaries
+	 */
+	public function displayForm()
+	{
+	    $default_lang = (int)Configuration::get('PS_LANG_DEFAULT');
+	     
+	    $fields_form[0]['form'] = array(
+	        'legend' => array(
+	            'title' => $this->l('Settings'),
+	        ),
+	        'input' => array(
+	            array(
+	                'type' => 'text',
+	                'label' => $this->l('Configuration value'),
+	                'name' => 'MYMODULE_NAME',
+	                'size' => 20,
+	                'required' => true
+	            )
+	        ),
+	        'submit' => array(
+	            'title' => $this->l('Save'),
+	            'class' => 'button'
+	        )
+	    );
+	     
+	    $helper = new HelperForm();
+	     
+	    // Module, token and currentIndex
+	    $helper->module = $this;
+	    $helper->name_controller = $this->name;
+	    $helper->token = Tools::getAdminTokenLite('AdminModules');
+	    $helper->currentIndex = AdminController::$currentIndex.'&configure='.$this->name;
+	     
+	    // Language
+	    $helper->default_form_language = $default_lang;
+	    $helper->allow_employee_form_lang = $default_lang;
+	     
+	    // Title and toolbar
+	    $helper->title = $this->displayName;
+	    $helper->show_toolbar = true;      
+	    $helper->toolbar_scroll = true;
+	    $helper->submit_action = 'submit'.$this->name;
+	    $helper->toolbar_btn = array(
+	        'save' =>
+	        array(
+	            'desc' => $this->l('Save'),
+	            'href' => AdminController::$currentIndex.'&configure='.$this->name.'&save'.$this->name.
+	            '&token='.Tools::getAdminTokenLite('AdminModules'),
+	        ),
+	        'back' => array(
+	            'href' => AdminController::$currentIndex.'&token='.Tools::getAdminTokenLite('AdminModules'),
+	            'desc' => $this->l('Back to list')
+	        )
+	    );
+	     
+	    // Load current value
+	    $helper->fields_value['MYMODULE_NAME'] = Configuration::get('MYMODULE_NAME');
+	     
+	    return $helper->generateForm($fields_form);
 	}
 }
