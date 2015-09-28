@@ -1,8 +1,8 @@
 <?php
 
 /*
-*  @author Mario Johnathan <xanou.dev@gmail.com>
-*/
+ *  @author Mario Johnathan <xanou.dev@gmail.com>
+ */
 
 if (!defined('_PS_VERSION_'))
   exit;
@@ -34,7 +34,7 @@ class Lexikotron extends Module
 	{
 		if (
 			!parent::install()
-			&& !$this->createTables();
+			&& !$this->createTables()
 		)
 			return false;
 		return true;
@@ -79,12 +79,26 @@ class Lexikotron extends Module
 	}
 
 	/**
-	 * deletes tables
+	 * Deletes tables
 	 */
 	protected function deleteTables()
 	{
-		return Db::getInstance()->execute('
+		$sql = Db::getInstance()->execute('
 			DROP TABLE IF EXISTS `'._DB_PREFIX_.'lexikotron`;
 		');
+
+		$sql &= Db::getInstance()->execute('
+			DROP TABLE IF EXISTS `'._DB_PREFIX_.'lexikotron_lang`;
+		');
+
+		return $sql;
+	}
+
+	/**
+	 * Creates a configuration page
+	 */
+	public function getContent()
+	{
+
 	}
 }
