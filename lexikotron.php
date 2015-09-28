@@ -6,6 +6,8 @@
 
 if (!defined('_PS_VERSION_'))
   exit;
+
+include_once(_PS_MODULE_DIR_.'lexikotron/models/Glossary.php');
  
 class Lexikotron extends Module
 {
@@ -58,6 +60,7 @@ class Lexikotron extends Module
 		$sql &=  Db::getInstance()->execute('
 			CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lexikotron_lang` (
 				`id_lexikotron` int(10) unsigned NOT NULL,
+			  	`id_lang` int(10) unsigned NOT NULL,
 				`name` varchar(255) NOT NULL,
 				`description` text NOT NULL
 			) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=UTF8;
