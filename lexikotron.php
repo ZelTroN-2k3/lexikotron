@@ -11,6 +11,9 @@ include_once(_PS_MODULE_DIR_.'lexikotron/models/Glossary.php');
  
 class Lexikotron extends Module
 {
+	/**
+	 * @see Module::__construct()
+	 */
 	public function __construct()
 	{
 		$this->name = 'lexikotron';
