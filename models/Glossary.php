@@ -26,6 +26,7 @@ class Glossary extends ObjectModel
 	/**
 	 * Get all available glossaries
 	 * @param integer $id_lang Language id
+	 * @param array $criteria Criterias for where clause
 	 * @param integer $start Start number
 	 * @param integer $limit Number of glossaries to return
 	 * @param string $order_by Field for ordering
@@ -34,8 +35,10 @@ class Glossary extends ObjectModel
 	 * @param Context|null $context     
 	 * @return array list of glossaries
 	 */
-	public static function getGlossaries($id_lang, $start = null, $limit = null, $order_by = null, $order_way = null, $only_active = false, Context $context = null)
+	public static function getGlossaries($id_lang, $criteria = array(), $start = null, $limit = null, $order_by = null, $order_way = null, $only_active = false, Context $context = null)
 	{
+		$where = '';
+
 		if (!$context)
 			$context = Context::getContext();
 
@@ -58,12 +61,18 @@ class Glossary extends ObjectModel
 			}
 		}
 
+		if(isset($criteria['k']))
+		{
+			$where .= " AND l.name LIKE '".$criteria['k']."%' ";
+		}
+
 
 		$sql = 'SELECT l.*, ll.*
 				FROM `'._DB_PREFIX_.'lexikotron` l
 				LEFT JOIN `'._DB_PREFIX_.'lexikotron_lang` ll ON (l.`id` = ll.`id_lexikotron`)
 				WHERE ll.`id_lang` = '.(int)$id_lang.
 					($only_active ? ' AND l.`active` = 1' : '').'
+					'.$where.'
 				'.($order_by != null ? ('ORDER BY '.(isset($order_by_prefix) ? pSQL($order_by_prefix).'.' : '').'`'.pSQL($order_by).'` '.pSQL($order_way)) : '').
 				($limit > 0 ? ' LIMIT '.(int)$start.','.(int)$limit : '');
 		$rows = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
