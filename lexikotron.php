@@ -187,12 +187,6 @@ class Lexikotron extends Module
 	    $helper->toolbar_scroll = true;
 	    $helper->submit_action = 'submit'.$this->name;
 	    $helper->toolbar_btn = array(
-	        'save' =>
-	        array(
-	            'desc' => $this->l('Save'),
-	            'href' => AdminController::$currentIndex.'&configure='.$this->name.'&save'.$this->name.
-	            '&token='.Tools::getAdminTokenLite('AdminModules'),
-	        ),
 	        'back' => array(
 	            'href' => AdminController::$currentIndex.'&token='.Tools::getAdminTokenLite('AdminModules'),
 	            'desc' => $this->l('Back to list')
