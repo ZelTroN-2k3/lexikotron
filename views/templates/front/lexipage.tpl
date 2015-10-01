@@ -1,4 +1,4 @@
-<h2>{l s='Glossary' mod='lexikotron'}</h2>
+<h2>{$title}</h2>
 
 <div id="glossaries-list">
 	<dl>

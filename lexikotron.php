@@ -40,6 +40,7 @@ class Lexikotron extends Module
 		if (
 			!parent::install()
 			|| !$this->createTables()
+			|| !Configuration::updateValue('LXK_PAGE_TITLE', 'Glossary')
 		)
 			return false;
 		return true;
@@ -152,12 +153,12 @@ class Lexikotron extends Module
 				        array(
 				            'id'    => 'lxk_pagination_on',                           
 				            'value' => 1,                                     
-				            'label' => $this->l('Enabled')                    
+				            'label' => $this->l('Yes')                    
 				        ),
 				        array(
 				            'id'    => 'lxk_pagination_off',
 				            'value' => 0,
-				            'label' => $this->l('Disabled')
+				            'label' => $this->l('No')
 				        )
 				    ),
 				),
