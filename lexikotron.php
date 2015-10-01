@@ -105,18 +105,16 @@ class Lexikotron extends Module
 	 */
 	public function getContent()
 	{
-		$output = null;
+		$output = '';
  
 	    if (Tools::isSubmit('submit'.$this->name))
 	    {
-	        $my_module_name = strval(Tools::getValue('MYMODULE_NAME'));
-	        if (!$my_module_name
-	          || empty($my_module_name)
-	          || !Validate::isGenericName($my_module_name))
-	            $output .= $this->displayError($this->l('Invalid Configuration value'));
+	        $page_title = strval(Tools::getValue('LXK_PAGE_TITLE'));
+	        if (!$page_title || empty($page_title))
+	            $output .= $this->displayError($this->l('Invalid page title'));
 	        else
 	        {
-	            Configuration::updateValue('MYMODULE_NAME', $my_module_name);
+	            Configuration::updateValue('LXK_PAGE_TITLE', $page_title);
 	            $output .= $this->displayConfirmation($this->l('Settings updated'));
 	        }
 	    }
@@ -138,11 +136,31 @@ class Lexikotron extends Module
 	        'input' => array(
 	            array(
 	                'type' => 'text',
-	                'label' => $this->l('Configuration value'),
-	                'name' => 'MYMODULE_NAME',
+	                'label' => $this->l('Title of page'),
+	                'name' => 'LXK_PAGE_TITLE',
 	                'size' => 20,
 	                'required' => true
-	            )
+	            ),
+	            array(
+				    'type'      => 'radio',                               
+				    'label'     => $this->l('Enable pagination'),        
+				    'name'      => 'LXK_PAGINATION',                              
+				    'required'  => true,                                  
+				    'class'     => 't',                                   
+				    'is_bool'   => true,                                  
+				    'values'    => array(                                 
+				        array(
+				            'id'    => 'lxk_pagination_on',                           
+				            'value' => 1,                                     
+				            'label' => $this->l('Enabled')                    
+				        ),
+				        array(
+				            'id'    => 'lxk_pagination_off',
+				            'value' => 0,
+				            'label' => $this->l('Disabled')
+				        )
+				    ),
+				),
 	        ),
 	        'submit' => array(
 	            'title' => $this->l('Save'),
@@ -181,7 +199,8 @@ class Lexikotron extends Module
 	    );
 	     
 	    // Load current value
-	    $helper->fields_value['MYMODULE_NAME'] = Configuration::get('MYMODULE_NAME');
+	    $helper->fields_value['LXK_PAGE_TITLE'] = Configuration::get('LXK_PAGE_TITLE');
+	    $helper->fields_value['LXK_PAGINATION'] = Configuration::get('LXK_PAGINATION');
 	     
 	    return $helper->generateForm($fields_form);
 	}
