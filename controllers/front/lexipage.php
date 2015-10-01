@@ -12,12 +12,22 @@ class LexikotronLexipageModuleFrontController extends ModuleFrontController
 		$glossaries = Glossary::getGlossaries($this->context->language->id);
 		$alphabet = $this->getAlphabets($glossaries);
 
-		$filtered_list = Glossary::getGlossaries($this->context->language->id);
+		$criteria = array();
+		if(Tools::getValue('k'))
+		{
+			$criteria['k'] = Tools::getValue('k');
+		}
+		else if(count($alphabet))
+		{
+			$criteria['k'] = $alphabet[0];	
+		}
+
+		$filtered_list = Glossary::getGlossaries($this->context->language->id, $criteria);
 
 		$this->context->smarty->assign(array(
 			'title' => Configuration::get('LXK_PAGE_TITLE'),
 			'alphabet' => $alphabet, 
-			'glossaries' => $glossaries
+			'glossaries' => $filtered_list
 		));
 
 		$this->setTemplate('lexipage.tpl');
