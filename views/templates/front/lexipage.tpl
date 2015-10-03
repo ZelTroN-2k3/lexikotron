@@ -18,3 +18,13 @@
 	{/foreach}
 	</dl>
 </div>
+
+{if $alphabet|@count}
+<div class="glossary-alphabet">
+	<ul>
+	{foreach from=$alphabet item=char}
+		<li><a href="{$link->getModuleLink('lexikotron', 'lexipage')}?k={$char}" title="{$char}">{$char}</a></li>
+	{/foreach}
+	</ul>
+</div>
+{/if}
