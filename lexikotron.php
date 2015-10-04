@@ -142,7 +142,7 @@ class Lexikotron extends Module
 	}
 
 	/**
-	 * Displays form for adding/editing glossaries
+	 * Displays form for configs
 	 */
 	public function displayForm()
 	{

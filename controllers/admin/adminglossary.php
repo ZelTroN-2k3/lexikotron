@@ -89,25 +89,4 @@ class AdminGlossaryController extends ModuleAdminController
 
 		return parent::renderForm();
 	}
-
-	public function postProcess()
-	{
-		if (Tools::isSubmit('submitAdd'.$this->table))
-		{
-			$glossary = new Glossary();
-
-			$languages = Language::getLanguages(false);
-
-			foreach ($languages as $language)
-			{
-				$glossary->name[$language['id_lang']] = Tools::getValue('name_'.$language['id_lang']);
-				$glossary->description[$language['id_lang']] = Tools::getValue('description_'.$language['id_lang']);
-			}
-
-			if (!$glossary->save())
-				$this->errors[] = Tools::displayError('An error has occurred: Can\'t save the current object');
-			else
-				Tools::redirectAdmin(self::$currentIndex.'&conf=4&token='.$this->token);
-		}
-	}
 }
