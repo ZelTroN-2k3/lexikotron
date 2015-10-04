@@ -11,7 +11,7 @@ class Glossary extends ObjectModel
 
 	public static $definition = array(
 		'table' => 'lexikotron',
-		'primary' => 'id',
+		'primary' => 'id_lexikotron',
 		'multilang' => true,
 		'fields' => array(
 			'active' =>	array('type' => self::TYPE_BOOL, 'shop' => true, 'validate' => 'isBool'),
