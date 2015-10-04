@@ -68,15 +68,13 @@ class AdminGlossaryController extends ModuleAdminController
 					'type' => 'text',
 					'lang' => true,
 					'label' => $this->l('Name:'),
-					'name' => 'name',
-					'size' => 40
+					'name' => 'name'
 				),
 				array(
 					'type' => 'textarea',
 					'label' => $this->l('Description:'),
 					'name' => 'description',
-					'lang' => true,
-					'size' => 40
+					'lang' => true
 				)
 			),
 			'submit' => array(
@@ -98,8 +96,10 @@ class AdminGlossaryController extends ModuleAdminController
 		if (Tools::isSubmit('submitAdd'.$this->table))
 		{
 			$glossary = new Glossary();
-			$glossary->date_add = new DateTime();
-			$glossary->date_edit = new DateTime();
+			$now = new DateTime();
+			$glossary->date_add = $now->format('Y-m-d H:i:s');
+			$glossary->date_edit = $now->format('Y-m-d H:i:s');
+
 			$languages = Language::getLanguages(false);
 
 			foreach ($languages as $language)

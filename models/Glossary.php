@@ -16,8 +16,7 @@ class Glossary extends ObjectModel
 		'fields' => array(
 			'active' =>	array('type' => self::TYPE_BOOL, 'shop' => true, 'validate' => 'isBool'),
 			'name' => array('type' => self::TYPE_STRING, 'lang' => true),
-			'd
-			escription' => array('type' => self::TYPE_HTML,	'lang' => true),
+			'description' => array('type' => self::TYPE_HTML,	'lang' => true),
 			'date_add' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
 			'date_edit' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
 		)
