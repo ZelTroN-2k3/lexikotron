@@ -37,6 +37,16 @@ class Lexikotron extends Module
 	 */
 	public function install()
 	{
+
+		// Install Tabs
+		$tab = new Tab();
+		// Need a foreach for the language
+		$tab->name[$this->context->language->id] = $this->l('Glossary');
+		$tab->class_name = 'AdminGlossary';
+		$tab->id_parent = 0; // Home tab
+		$tab->module = $this->name;
+		$tab->add();
+
 		if (
 			!parent::install()
 			|| !$this->createTables()
@@ -77,6 +87,14 @@ class Lexikotron extends Module
 	 */
 	public function uninstall()
 	{
+		// Uninstall Tabs
+		$moduleTabs = Tab::getCollectionFromModule($this->name);
+		if (!empty($moduleTabs)) {
+			foreach ($moduleTabs as $moduleTab) {
+				$moduleTab->delete();
+			}
+		}
+		
 		if (
 			!parent::uninstall()
 			|| !$this->deleteTables()
