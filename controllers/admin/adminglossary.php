@@ -90,15 +90,11 @@ class AdminGlossaryController extends ModuleAdminController
 		return parent::renderForm();
 	}
 
-
 	public function postProcess()
 	{
 		if (Tools::isSubmit('submitAdd'.$this->table))
 		{
 			$glossary = new Glossary();
-			$now = new DateTime();
-			$glossary->date_add = $now->format('Y-m-d H:i:s');
-			$glossary->date_edit = $now->format('Y-m-d H:i:s');
 
 			$languages = Language::getLanguages(false);
 

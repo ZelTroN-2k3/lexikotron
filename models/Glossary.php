@@ -7,7 +7,7 @@ class Glossary extends ObjectModel
 	public $name;
 	public $description;
 	public $date_add;
-	public $date_edit;
+	public $date_upd;
 
 	public static $definition = array(
 		'table' => 'lexikotron',
@@ -18,7 +18,7 @@ class Glossary extends ObjectModel
 			'name' => array('type' => self::TYPE_STRING, 'lang' => true),
 			'description' => array('type' => self::TYPE_HTML,	'lang' => true),
 			'date_add' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
-			'date_edit' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
+			'date_upd' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
 		)
 	);
 

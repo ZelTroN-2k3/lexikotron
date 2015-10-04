@@ -66,7 +66,7 @@ class Lexikotron extends Module
 				`id_lexikotron` int(10) unsigned NOT NULL AUTO_INCREMENT,
 				`active` TINYINT(1) NOT NULL,
 				`date_add` DATETIME NOT NULL,
-				`date_edit` DATETIME NOT NULL,
+				`date_upd` DATETIME NOT NULL,
 				PRIMARY KEY (`id_lexikotron`)
 			) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=UTF8;
 		');
