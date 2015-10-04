@@ -53,11 +53,11 @@ class Lexikotron extends Module
 	{
 		$sql = Db::getInstance()->execute('
 			CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'lexikotron` (
-				`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+				`id_lexikotron` int(10) unsigned NOT NULL AUTO_INCREMENT,
 				`active` TINYINT(1) NOT NULL,
 				`date_add` DATETIME NOT NULL,
 				`date_edit` DATETIME NOT NULL,
-				PRIMARY KEY (`id`)
+				PRIMARY KEY (`id_lexikotron`)
 			) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=UTF8;
 		');
 
