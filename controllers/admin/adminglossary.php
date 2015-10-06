@@ -20,12 +20,12 @@ class AdminGlossaryController extends ModuleAdminController
 	}
 	
 	/**
-	 * @see ModuleAdminController::renderList()
+	 * @see AdminController::renderList()
 	 */
 	public function renderList()
 	{
 		$this->fields_list = array(
-		    'id' => array(
+		    'id_lexikotron' => array(
 		        'title'	=> '#'
 		    ),
 		    'name' => array(
@@ -50,18 +50,17 @@ class AdminGlossaryController extends ModuleAdminController
 
 		return $lists;
 	}
-
 	
 	/**
-	 * @see ModuleAdminController::renderForm()
+	 * @see AdminController::renderForm()
 	 */
 	public function renderForm()
 	{
 		$this->fields_form = array(
 			'tinymce' => true,
 			'legend' => array(
-				'title' => $this->l('Example'),
-				// 'image' => '../img/admin/cog.gif'
+				'title' => $this->l('Glossary'),
+				'image' => '../img/admin/cog.gif'
 			),
 			'input' => array(
 				array(
@@ -75,7 +74,27 @@ class AdminGlossaryController extends ModuleAdminController
 					'label' => $this->l('Description:'),
 					'name' => 'description',
 					'lang' => true
-				)
+				),
+	            array(
+				    'type'      => 'radio',                               
+				    'label'     => $this->l('Enabled'),        
+				    'name'      => 'active',                              
+				    'required'  => true,                                  
+				    'class'     => 't',                                   
+				    'is_bool'   => true,                                  
+				    'values'    => array(                                 
+				        array(
+				            'id'    => 'glossary_on',                           
+				            'value' => 1,                                     
+				            'label' => $this->l('Yes')                    
+				        ),
+				        array(
+				            'id'    => 'glossary_off',
+				            'value' => 0,
+				            'label' => $this->l('No')
+				        )
+				    ),
+				),
 			),
 			'submit' => array(
 				'title' => $this->l('Save'),
@@ -88,5 +107,20 @@ class AdminGlossaryController extends ModuleAdminController
 		$this->fields_value = array('lorem' => 'ipsum');
 
 		return parent::renderForm();
+	}
+
+	
+	/**
+	 * @see AdminController::postProcess()
+	 */
+	public function postProcess()
+	{
+		// var_dump(Tools::getValue('active')); exit;
+		if (Tools::isSubmit('submitAdd'.$this->table))
+		{
+			
+		}
+
+		return parent::postProcess();
 	}
 }
