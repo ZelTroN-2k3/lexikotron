@@ -1,30 +1,14 @@
-<h2>{$title}</h2>
+<h1>{$title}</h1>
 
-{if $alphabet|@count}
-<div class="glossary-alphabet">
-	<ul>
-	{foreach from=$alphabet item=char}
-		<li><a href="{$link->getModuleLink('lexikotron', 'lexipage')}?k={$char}" title="{$char}">{$char}</a></li>
-	{/foreach}
-	</ul>
-</div>
-{/if}
+{include file="$pagination_templates"}
 
-<div id="glossary-list">
-	<dl>
+<div class="list-group">
 	{foreach from=$glossaries item=glossary}
-		<dt>{$glossary.name}</dt>
-		<dd>{$glossary.description}</dd>
+	<div class="list-group-item">
+	    <p class="list-group-item-heading"><b>{$glossary.name}</b></p>
+	    <p class="list-group-item-text">{$glossary.description}</p>
+	</div>
 	{/foreach}
-	</dl>
 </div>
 
-{if $alphabet|@count}
-<div class="glossary-alphabet">
-	<ul>
-	{foreach from=$alphabet item=char}
-		<li><a href="{$link->getModuleLink('lexikotron', 'lexipage')}?k={$char}" title="{$char}">{$char}</a></li>
-	{/foreach}
-	</ul>
-</div>
-{/if}
+{include file="$pagination_templates"}

@@ -26,8 +26,10 @@ class LexikotronLexipageModuleFrontController extends ModuleFrontController
 
 		$this->context->smarty->assign(array(
 			'title' => Configuration::get('LXK_PAGE_TITLE'),
+			'current' => isset($criteria['k']) ? $criteria['k'] : null,
 			'alphabet' => $alphabet, 
-			'glossaries' => $filtered_list
+			'glossaries' => $filtered_list,
+			'pagination_templates' => dirname(__FILE__).'/../../views/templates/front/pagination.tpl'
 		));
 
 		$this->setTemplate('lexipage.tpl');
