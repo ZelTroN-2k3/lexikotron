@@ -173,12 +173,12 @@ class Lexikotron extends Module
 				    'values'    => array(                                 
 				        array(
 				            'id'    => 'lxk_pagination_on',                           
-				            'value' => 1,                                     
+				            'value' => true,                                     
 				            'label' => $this->l('Yes')                    
 				        ),
 				        array(
 				            'id'    => 'lxk_pagination_off',
-				            'value' => 0,
+				            'value' => false,
 				            'label' => $this->l('No')
 				        )
 				    ),
