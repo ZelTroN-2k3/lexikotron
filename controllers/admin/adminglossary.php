@@ -108,4 +108,18 @@ class AdminGlossaryController extends ModuleAdminController
 
 		return parent::renderForm();
 	}
+
+	// TODO LATER
+	// protected function processBulkSended(){
+	// 	if (is_array($this->boxes) && !empty($this->boxes)){
+	// 		$employee_id = $this->context->employee->id;
+	// 		$new_order_state = 4; // id state
+				
+	// 		$dbQuery = Db::getInstance();
+	// 		foreach ($this->boxes as $id_order){
+	// 			$result = $dbQuery->query('UPDATE '._DB_PREFIX_.'orders SET current_state =                          
+	// 				'.$new_order_state.' WHERE id_order = '.$id_order);
+	// 		}
+	// 	}
+	// }
 }
