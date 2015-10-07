@@ -68,7 +68,7 @@ class Glossary extends ObjectModel
 
 		$sql = 'SELECT l.*, ll.*
 				FROM `'._DB_PREFIX_.'lexikotron` l
-				LEFT JOIN `'._DB_PREFIX_.'lexikotron_lang` ll ON (l.`id` = ll.`id_lexikotron`)
+				LEFT JOIN `'._DB_PREFIX_.'lexikotron_lang` ll ON (l.`id_lexikotron` = ll.`id_lexikotron`)
 				WHERE ll.`id_lang` = '.(int)$id_lang.
 					($only_active ? ' AND l.`active` = 1' : '').'
 					'.$where.'

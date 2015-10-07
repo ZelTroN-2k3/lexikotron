@@ -9,7 +9,7 @@ class LexikotronLexipageModuleFrontController extends ModuleFrontController
 	{
 		parent::initContent();
 
-		$glossaries = Glossary::getGlossaries($this->context->language->id);
+		$glossaries = Glossary::getGlossaries($this->context->language->id, array(), null, null, null, null, true);
 		$alphabet = $this->getAlphabets($glossaries);
 
 		$criteria = array();
@@ -22,7 +22,7 @@ class LexikotronLexipageModuleFrontController extends ModuleFrontController
 			$criteria['k'] = $alphabet[0];	
 		}
 
-		$filtered_list = Glossary::getGlossaries($this->context->language->id, $criteria);
+		$filtered_list = Glossary::getGlossaries($this->context->language->id, $criteria, null, null, null, null, true);
 
 		$this->context->smarty->assign(array(
 			'title' => Configuration::get('LXK_PAGE_TITLE'),
