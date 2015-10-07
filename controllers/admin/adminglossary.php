@@ -108,18 +108,4 @@ class AdminGlossaryController extends ModuleAdminController
 
 		return parent::renderForm();
 	}
-
-	
-	/**
-	 * @see AdminController::postProcess()
-	 */
-	public function postProcess()
-	{
-		if (Tools::isSubmit('submitAdd'.$this->table))
-		{
-			
-		}
-
-		return parent::postProcess();
-	}
 }
