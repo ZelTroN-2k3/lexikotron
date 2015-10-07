@@ -134,6 +134,8 @@ class Lexikotron extends Module
 	        else
 	        {
 	            Configuration::updateValue('LXK_PAGE_TITLE', $page_title);
+	            Configuration::updateValue('LXK_PAGINATION', Tools::getValue('LXK_PAGINATION'));
+
 	            $output .= $this->displayConfirmation($this->l('Settings updated'));
 	        }
 	    }
@@ -162,7 +164,8 @@ class Lexikotron extends Module
 	            ),
 	            array(
 				    'type'      => 'radio',                               
-				    'label'     => $this->l('Enable pagination'),        
+				    'label'     => $this->l('Enable pagination'), 
+				    'desc' 		=> 'If enabled, you\'ll get one page per letter' ,       
 				    'name'      => 'LXK_PAGINATION',                              
 				    'required'  => true,                                  
 				    'class'     => 't',                                   
