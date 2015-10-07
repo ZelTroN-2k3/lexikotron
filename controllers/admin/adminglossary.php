@@ -104,7 +104,7 @@ class AdminGlossaryController extends ModuleAdminController
 		if (!($obj = $this->loadObject(true)))
 			return;
 		
-		$this->fields_value = array('lorem' => 'ipsum');
+		// $this->fields_value = array('lorem' => 'ipsum');
 
 		return parent::renderForm();
 	}
@@ -115,7 +115,6 @@ class AdminGlossaryController extends ModuleAdminController
 	 */
 	public function postProcess()
 	{
-		// var_dump(Tools::getValue('active')); exit;
 		if (Tools::isSubmit('submitAdd'.$this->table))
 		{
 			

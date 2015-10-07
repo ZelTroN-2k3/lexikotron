@@ -14,7 +14,7 @@ class Glossary extends ObjectModel
 		'primary' => 'id_lexikotron',
 		'multilang' => true,
 		'fields' => array(
-			'active' =>	array('type' => self::TYPE_BOOL, 'shop' => true),
+			'active' =>	array('type' => self::TYPE_BOOL),
 			'name' => array('type' => self::TYPE_STRING, 'lang' => true),
 			'description' => array('type' => self::TYPE_HTML,	'lang' => true),
 			'date_add' => array('type' => self::TYPE_DATE, 'validate' => 'isDateFormat'),
