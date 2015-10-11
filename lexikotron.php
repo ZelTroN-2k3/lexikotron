@@ -21,6 +21,7 @@ class Lexikotron extends Module
 		$this->version = '1.0.0';
 		$this->author = 'Mario Johnathan';
 		$this->need_instance = 0;
+		$this->bootstrap = true;
 		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_); 
 
 		parent::__construct();
@@ -124,6 +125,8 @@ class Lexikotron extends Module
 	 */
 	public function getContent()
 	{
+		// $this->context->controller->addjQueryPlugin('hoverIntent');
+
 		$output = '';
  
 	    if (Tools::isSubmit('submit'.$this->name))
@@ -139,14 +142,14 @@ class Lexikotron extends Module
 	            $output .= $this->displayConfirmation($this->l('Settings updated'));
 	        }
 	    }
-	    return $output.$this->displayForm();
+	    return $output.$this->renderForm();
 
 	}
 
 	/**
 	 * Displays form for configs
 	 */
-	public function displayForm()
+	public function renderForm()
 	{
 	    $default_lang = (int)Configuration::get('PS_LANG_DEFAULT');
 	     
@@ -163,7 +166,7 @@ class Lexikotron extends Module
 	                'required' => true
 	            ),
 	            array(
-				    'type'      => 'radio',                               
+				    'type'      => 'switch',                               
 				    'label'     => $this->l('Enable pagination'), 
 				    'desc' 		=> 'If enabled, you\'ll get one page per letter' ,       
 				    'name'      => 'LXK_PAGINATION',                              

@@ -89,7 +89,7 @@ class AdminGlossaryController extends ModuleAdminController
 					'autoload_rte' => true
 				),
 	            array(
-				    'type'      => 'radio',                               
+				    'type'      => 'switch',                               
 				    'label'     => $this->l('Enabled'),        
 				    'name'      => 'active',                              
 				    'required'  => true,                                  
