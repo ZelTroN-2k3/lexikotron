@@ -18,7 +18,7 @@
 		{foreach from=$v item=glossary}
 		<div class="list-group-item">
 		    <p class="list-group-item-heading"><b>{$glossary.name}</b></p>
-		    <p class="list-group-item-text">{$glossary.description}</p>
+		    <p class="list-group-item-text">{$glossary.description|nl2br}</p>
 		</div>
 		{/foreach}
 	</div>

@@ -85,7 +85,8 @@ class AdminGlossaryController extends ModuleAdminController
 					'type' => 'textarea',
 					'label' => $this->l('Description:'),
 					'name' => 'description',
-					'lang' => true
+					'lang' => true,
+					'autoload_rte' => true
 				),
 	            array(
 				    'type'      => 'radio',                               
@@ -113,6 +114,7 @@ class AdminGlossaryController extends ModuleAdminController
 				'class' => 'button'
 			)
 		);
+
 		if (!($obj = $this->loadObject(true)))
 			return;
 		
