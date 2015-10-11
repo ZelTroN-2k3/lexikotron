@@ -1,5 +1,7 @@
 <?php
 
+include_once(_PS_MODULE_DIR_.'lexikotron/models/Glossary.php');
+
 class AdminGlossaryController extends ModuleAdminController
 {
 	/**
@@ -17,6 +19,21 @@ class AdminGlossaryController extends ModuleAdminController
 		$this->_select = 'll.*';
 
 		parent::__construct();
+	}
+
+	/**
+	 * @see ModuleAdminController::initProcess()
+	 */
+	public function initProcess()
+	{		
+        $this->bulk_actions = array(
+        	'delete' => array(
+        		'text' => $this->l('Delete selected'),
+                'confirm' => $this->l('Delete selected items?')
+        	)
+        );
+
+	    parent::initProcess();
 	}
 	
 	/**
@@ -38,11 +55,6 @@ class AdminGlossaryController extends ModuleAdminController
 		);
 
 		$this->actions = array('edit', 'delete');
-        $this->bulk_actions = array(
-        	'delete' => array(
-        		'text' => $this->l('Delete selected'),
-                'confirm' => $this->l('Delete selected items?')
-        ));
 
 		$lists = parent::renderList();
 
@@ -104,22 +116,6 @@ class AdminGlossaryController extends ModuleAdminController
 		if (!($obj = $this->loadObject(true)))
 			return;
 		
-		// $this->fields_value = array('lorem' => 'ipsum');
-
 		return parent::renderForm();
 	}
-
-	// TODO LATER
-	// protected function processBulkSended(){
-	// 	if (is_array($this->boxes) && !empty($this->boxes)){
-	// 		$employee_id = $this->context->employee->id;
-	// 		$new_order_state = 4; // id state
-				
-	// 		$dbQuery = Db::getInstance();
-	// 		foreach ($this->boxes as $id_order){
-	// 			$result = $dbQuery->query('UPDATE '._DB_PREFIX_.'orders SET current_state =                          
-	// 				'.$new_order_state.' WHERE id_order = '.$id_order);
-	// 		}
-	// 	}
-	// }
 }
