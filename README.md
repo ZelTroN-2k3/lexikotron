@@ -1,4 +1,10 @@
-# lexikotron
-Lexikotron is a prestashop module that generates a glossary
+# Prestashop glossary module
 
-It's still in development. Please, come back later.
+## About
+
+Prestashop module that allows to manage a glossary
+
+## Requirements
+
+Tested on
+* Prestashop 1.6.0.14
