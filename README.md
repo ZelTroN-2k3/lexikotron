@@ -12,8 +12,8 @@ Tested on
 ## Features
 * You can configure the title of the front page
 * You have two display options :
-** Display all in one page
-** Display a letter per page
+  - Display all in one page
+  - Display a letter per page
 
 ## TODO
 - Make it compatible with PrestaShop 1.5
