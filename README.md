@@ -10,12 +10,13 @@ Tested on
 * Prestashop 1.6.0.14
 
 ## Features
+### Configuration
 * You can configure the title of the front page
 * You have two display options :
   - Display all in one page
   - Display a letter per page
 
-## TODO
+### TODO
 - Make it compatible with PrestaShop 1.5
 
 ## License
