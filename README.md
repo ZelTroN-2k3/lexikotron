@@ -2,7 +2,7 @@
 
 ## About
 
-Prestashop module that allows to manage a glossary
+Prestashop module to manage a glossary
 
 ## Compatibility
 
