@@ -18,6 +18,7 @@ Tested on
 
 ### TODO
 - Make it compatible with PrestaShop 1.5
+- Add active on current letter
 
 ## License
 The MIT License (MIT)
