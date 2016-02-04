@@ -62,7 +62,7 @@ class Glossary extends ObjectModel
 
 		if(isset($criteria['k']))
 		{
-			$where .= " AND ll.name LIKE '".$criteria['k']."%' ";
+			$where .= " AND ll.name LIKE '".pSQL($criteria['k'])."%' ";
 		}
 
 
