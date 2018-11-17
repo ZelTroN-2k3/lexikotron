@@ -55,7 +55,7 @@ class AdminGlossaryController extends ModuleAdminController
         );
 
         $this->actions = array('edit', 'delete');
-
+        $this->lang = your_id_language;
         $lists = parent::renderList();
 
         parent::initToolbar();
