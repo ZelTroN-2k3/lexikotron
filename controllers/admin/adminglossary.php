@@ -12,10 +12,11 @@ class AdminGlossaryController extends ModuleAdminController
         $this->table      = 'lexikotron';
         $this->className  = 'Glossary';
         $this->identifier = "id_lexikotron";
-        $this->lang = true;
         $this->bootstrap  = true;
 
-        $this->context = Context::getContext();
+        $this->_join = 'LEFT JOIN `' . _DB_PREFIX_ . 'lexikotron_lang` ll ON (a.`id_lexikotron` = ll.`id_lexikotron`)';
+
+        $this->_select = 'll.*';
 
         parent::__construct();
     }
@@ -54,7 +55,7 @@ class AdminGlossaryController extends ModuleAdminController
         );
 
         $this->actions = array('edit', 'delete');
-
+		$this->lang = $this->context->language->id;
         $lists = parent::renderList();
 
         parent::initToolbar();
