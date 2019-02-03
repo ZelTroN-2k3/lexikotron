@@ -1,7 +1,6 @@
 <?php
 
 include_once _PS_MODULE_DIR_ . 'lexikotron/models/Glossary.php';
-
 class AdminGlossaryController extends ModuleAdminController
 {
     /**
@@ -12,12 +11,13 @@ class AdminGlossaryController extends ModuleAdminController
         $this->table      = 'lexikotron';
         $this->className  = 'Glossary';
         $this->identifier = "id_lexikotron";
+        $this->lang = true;
         $this->bootstrap  = true;
-
-        $this->_join = 'LEFT JOIN `' . _DB_PREFIX_ . 'lexikotron_lang` ll ON (a.`id_lexikotron` = ll.`id_lexikotron`)';
-
-        $this->_select = 'll.*';
-
+/*
+*        $this->_join = 'LEFT JOIN `' . _DB_PREFIX_ . 'lexikotron_lang` ll ON (a.`id_lexikotron` = ll.`id_lexikotron`)';
+*        $this->_select = 'll.*';
+*/
+        $this->context = Context::getContext();
         parent::__construct();
     }
 
@@ -55,11 +55,11 @@ class AdminGlossaryController extends ModuleAdminController
         );
 
         $this->actions = array('edit', 'delete');
-		$this->lang = $this->context->language->id;
+/*
+*        $this->lang = $this->context->language->id;
+*/
         $lists = parent::renderList();
-
         parent::initToolbar();
-
         return $lists;
     }
 
