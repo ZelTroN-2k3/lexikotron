@@ -11,7 +11,9 @@ Tested on
 * Prestashop 1.6.1.15
 
 ## Features
-* Update Multilangage tested prestashop 1.16.1.15
+* Update v1.0.1
+* Langage Module En/Fr
+* Multilangage (BackOffice Prestashop) tested Prestashop 1.16.1.15
 
 ### Configuration
 * You can configure the title of the front page
@@ -20,7 +22,7 @@ Tested on
   - Display a letter per page
 
 ### TODO
-- Make it compatible with PrestaShop 1.5
+- Make it compatible with PrestaShop 1.5 and 1.6
 - Add active on current letter
 
 ## License
