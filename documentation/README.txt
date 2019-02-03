@@ -8,8 +8,12 @@ Prestashop module to manage a glossary
 
 Tested on
 * Prestashop 1.6.0.14
+* Prestashop 1.6.1.15
 
 ## Features
+* Update v1.0.1 
+* Multilangage tested prestashop 1.16.1.15
+
 ### Configuration
 * You can configure the title of the front page
 * You have two display options :
