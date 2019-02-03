@@ -1,0 +1,38 @@
+<?php
+
+global $_MODULE;
+$_MODULE = array();
+$_MODULE['<{lexikotron}prestashop>lexikotron_ad5830d7aaef211c4c3fe708056fe980'] = 'Lexikotron';
+$_MODULE['<{lexikotron}prestashop>lexikotron_0c91ca8151b4c2be9f8a67a0e7790d25'] = 'Lexikotron est un module pour faire un glossaire';
+$_MODULE['<{lexikotron}prestashop>lexikotron_876f23178c29dc2552c0b48bf23cd9bd'] = 'Êtes-vous sur de vouloir désinstaller?';
+$_MODULE['<{lexikotron}prestashop>lexikotron_31d109d162629f8d0cfc8ce8316c0567'] = 'Glossaire';
+$_MODULE['<{lexikotron}prestashop>lexikotron_ba5c7d55ec85733632a8ad462f83f10a'] = 'Titre de page invalide';
+$_MODULE['<{lexikotron}prestashop>lexikotron_c888438d14855d7d96a2724ee9c306bd'] = 'Paramètres mis à jour';
+$_MODULE['<{lexikotron}prestashop>lexikotron_f4f70727dc34561dfde1a3c529b6205c'] = 'Réglages';
+$_MODULE['<{lexikotron}prestashop>lexikotron_7107807fc16f647df9b2039fbaa5adf9'] = 'Titre de la page';
+$_MODULE['<{lexikotron}prestashop>lexikotron_241875f13edd475e3248cced255fc2e8'] = 'Activer la pagination';
+$_MODULE['<{lexikotron}prestashop>lexikotron_dd6e909a52503ed344c20294d2500485'] = 'Si activé, vous aurez une page par lettre';
+$_MODULE['<{lexikotron}prestashop>lexikotron_93cba07454f06a4a960172bbd6e2a435'] = 'Oui';
+$_MODULE['<{lexikotron}prestashop>lexikotron_bafd7322c6e97d25b6299b5d6fe8920b'] = 'Non';
+$_MODULE['<{lexikotron}prestashop>lexikotron_c9cc8cce247e49bae79f15173ce97354'] = 'Sauvegarder';
+$_MODULE['<{lexikotron}prestashop>lexikotron_630f6dc397fe74e52d5189e2c80f282b'] = 'Retour à la liste';
+$_MODULE['<{lexikotron}prestashop>adminglossary_d3b206d196cd6be3a2764c1fb90b200f'] = 'Supprimer sélectionnée';
+$_MODULE['<{lexikotron}prestashop>adminglossary_e25f0ecd41211b01c83e5fec41df4fe7'] = 'Supprimer les éléments sélectionnés?';
+$_MODULE['<{lexikotron}prestashop>adminglossary_721abe55aca16aac7f8f004125c0a45f'] = 'Texte';
+$_MODULE['<{lexikotron}prestashop>adminglossary_7494b947fb8d75b27f502865f1c0a45d'] = 'Valider';
+$_MODULE['<{lexikotron}prestashop>adminglossary_31d109d162629f8d0cfc8ce8316c0567'] = 'Glossaire';
+$_MODULE['<{lexikotron}prestashop>adminglossary_4e140ba723a03baa6948340bf90e2ef6'] = 'Prénom:';
+$_MODULE['<{lexikotron}prestashop>adminglossary_d0042a700e9bdf79689d63ee6846dc0e'] = 'La description:';
+$_MODULE['<{lexikotron}prestashop>adminglossary_00d23a76e43b46dae9ec7aa9dcbebb32'] = 'Activée';
+$_MODULE['<{lexikotron}prestashop>adminglossary_93cba07454f06a4a960172bbd6e2a435'] = 'Oui';
+$_MODULE['<{lexikotron}prestashop>adminglossary_bafd7322c6e97d25b6299b5d6fe8920b'] = 'Non';
+$_MODULE['<{lexikotron}prestashop>adminglossary_c9cc8cce247e49bae79f15173ce97354'] = 'Sauvegarder';
+$_MODULE['<{lexikotron}prestashop>configure_e251036c30bb77cde6ac27fb528afcb7'] = 'Documentation et support';
+$_MODULE['<{lexikotron}prestashop>configure_dfc94e8224bbd24aa039a3c79fbb9d4e'] = 'Vous pouvez obtenir une documentation PDF pour configurer ce module';
+$_MODULE['<{lexikotron}prestashop>configure_90903e4ad3bc819a322b85b5c75c49f9'] = 'Rapport de bug sur GitHub uniquement';
+$_MODULE['<{lexikotron}prestashop>configure_d1bb0035ba97c16b2db62c4ee819e392'] = 'Pour tout rapport de bogue, veuillez suivre le processus suivant.';
+$_MODULE['<{lexikotron}prestashop>configure_4d7636e6848603632d761d8dc556f743'] = 'Ceci est un module gratuit alimenté par';
+$_MODULE['<{lexikotron}prestashop>configure_35d2a045014da48b2a342f084f3713c7'] = 'sous licence';
+$_MODULE['<{lexikotron}prestashop>configure_38e96d2187970515dd4a8d3315226812'] = 'Vous apprécierez nos autres modules Bientôt disponible';
+$_MODULE['<{lexikotron}prestashop>configure_2af72f100c356273d46284f6fd1dfc08'] = 'version';
+$_MODULE['<{lexikotron}prestashop>configure_45c8c84bd38362651fa668b96c0781e5'] = 'TEST page Glossaire Liens ->';

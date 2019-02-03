@@ -12,6 +12,10 @@ include_once _PS_MODULE_DIR_ . 'lexikotron/models/Glossary.php';
 
 class Lexikotron extends Module
 {
+
+    /** @var string */
+    public $folder_path;
+    
     /**
      * @see Module::__construct()
      */
@@ -20,13 +24,14 @@ class Lexikotron extends Module
         $this->name                   = 'lexikotron';
         $this->tab                    = 'front_office_features';
         $this->version                = '1.0.1';
-        $this->author                 = 'Mario Johnathan';
+        $this->author                 = 'Mario Johnathan / ZelTroN2k3';
         $this->need_instance          = 0;
         $this->bootstrap              = true;
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 
         parent::__construct();
-
+		
+		$this->folder_path = $this->local_path;
         $this->displayName = $this->l('Lexikotron');
         $this->description = $this->l('Lexikotron is a module to make a glossary');
 
@@ -50,6 +55,7 @@ class Lexikotron extends Module
 
         if (!parent::install()
             || !$this->createTables()
+            || !$this->registerHook('displayBackOfficeTop')
             || !Configuration::updateValue('LXK_PAGE_TITLE', 'Glossary')
         ) {
             return false;
@@ -131,10 +137,21 @@ class Lexikotron extends Module
      *
      * @return string
      */
+    /**
+     * Load the configuration form
+     */     
     public function getContent()
     {
         $output = '';
 
+        $this->context->smarty->assign(
+			array(
+				'ps_version' => _PS_VERSION_,
+				'module_dir' => $this->_path,
+				'module_version' => $this->version
+			)
+		);
+        
         if (Tools::isSubmit('submit' . $this->name)) {
             $page_title = strval(Tools::getValue('LXK_PAGE_TITLE'));
             if (!$page_title || empty($page_title)) {
@@ -147,9 +164,20 @@ class Lexikotron extends Module
             }
         }
 
+        $this->context->controller->addCSS($this->_path.'/views/css/back.css');
+
+        $output .= $this->context->smarty->fetch($this->local_path.'views/templates/admin/configure.tpl');
+        
         return $output . $this->renderForm();
     }
 
+    public function hookDisplayBackOfficeTop()
+    {
+        if (Module::isInstalled('lexikotron')) {
+            return '<style>.icon-AdminGlossary:before{content:"\f14b";}</style>';
+        }
+    }
+    
     /**
      * Displays form for configs
      *
@@ -162,6 +190,7 @@ class Lexikotron extends Module
         $fields_form[0]['form'] = array(
             'legend' => array(
                 'title' => $this->l('Settings'),
+                'icon' => 'icon-plus-sign-alt'
             ),
             'input'  => array(
                 array(
@@ -174,7 +203,7 @@ class Lexikotron extends Module
                 array(
                     'type'     => 'switch',
                     'label'    => $this->l('Enable pagination'),
-                    'desc'     => 'If enabled, you\'ll get one page per letter',
+                    'desc'     => $this->l('If enabled, you\'ll get one page per letter'),
                     'name'     => 'LXK_PAGINATION',
                     'required' => true,
                     'class'    => 't',
@@ -194,8 +223,8 @@ class Lexikotron extends Module
                 ),
             ),
             'submit' => array(
-                'title' => $this->l('Save'),
-                'class' => 'button',
+                'title' => $this->l('Save'), // This is the button that saves the whole fieldset.
+                'class' => 'btn btn-default pull-right'
             ),
         );
 
@@ -213,8 +242,8 @@ class Lexikotron extends Module
 
         // Title and toolbar
         $helper->title          = $this->displayName;
-        $helper->show_toolbar   = true;
-        $helper->toolbar_scroll = true;
+        $helper->show_toolbar   = true; // false -> remove toolbar
+        $helper->toolbar_scroll = true; // yes - > Toolbar is always visible on the top of the screen.
         $helper->submit_action  = 'submit' . $this->name;
         $helper->toolbar_btn    = array(
             'back' => array(
